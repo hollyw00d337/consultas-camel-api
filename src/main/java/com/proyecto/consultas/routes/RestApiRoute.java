@@ -4,7 +4,10 @@ import com.proyecto.consultas.model.Consulta;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.springframework.stereotype.Component;
-
+/**
+ * Rutas de integracion usando Apache Camel.
+ * Endpoints Rest Directamente con la repo JPA
+ */
 @Component
 public class RestApiRoute extends RouteBuilder {
 
