@@ -10,25 +10,23 @@ public class RestApiRoute extends RouteBuilder {
 
     @Override
     public void configure() throws Exception {
-
-        // Configuración general de REST
+        
         restConfiguration()
             .component("servlet")
             .bindingMode(RestBindingMode.json);
 
-        // Definición de las rutas (Endpoints)
+        // Ruta relativa (se sumará al /api del properties)
         rest("/consultas")
-
-            // POST: Crear consulta
+            .consumes("application/json")
+            .produces("application/json")
+            
             .post()
                 .type(Consulta.class)
                 .to("bean:consultaRepository?method=save")
-
-            // GET: Listar todas
+            
             .get()
                 .to("bean:consultaRepository?method=findAll")
-
-            // DELETE: Borrar por ID
+            
             .delete("/{id}")
                 .to("bean:consultaRepository?method=deleteById(${header.id})");
     }
