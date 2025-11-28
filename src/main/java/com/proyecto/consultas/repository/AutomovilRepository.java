@@ -1,4 +1,4 @@
-package com.proyecto.consultas.repository; // <--- Paquete corregido
+package com.proyecto.consultas.repository;
 
 import com.proyecto.consultas.model.Automovil;
 import org.springframework.data.jpa.repository.JpaRepository;
