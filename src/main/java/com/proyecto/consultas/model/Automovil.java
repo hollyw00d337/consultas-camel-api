@@ -23,7 +23,6 @@ public class Automovil {
         this.color = color;
     }
 
-    // --- GETTERS Y SETTERS (Obligatorios para JSON) ---
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
