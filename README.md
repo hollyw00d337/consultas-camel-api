@@ -14,9 +14,3 @@ En la terminal
 sudo docker build -t consultas-img .
 sudo docker run -p 8080:8080 consultas-img
 
-## Realizar consultas ##
-Ejemplo
-
-curl -X POST http://localhost:8080/api/consultas \
-     -H "Content-Type: application/json" \
-     -d '{"paciente": "Alfredo Torres", "sintomas": "colitis ulcerosa", "fecha": "2025/11/26"}'
