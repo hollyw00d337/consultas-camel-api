@@ -12,27 +12,24 @@ public class RestApiRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        // Configuración global
         restConfiguration()
             .component("servlet")
             .bindingMode(RestBindingMode.json);
 
-        // Definición de las Rutas
         rest("/autos")
             .consumes(MediaType.APPLICATION_JSON_VALUE)
             .produces(MediaType.APPLICATION_JSON_VALUE)
 
-            // GET: Ver todos
-            // Usamos "bean:" seguido del nombre de la variable del repositorio (camelCase)
+            // GET: Llama a 'automovilService'
             .get()
-                .to("bean:automovilRepository?method=findAll")
+                .to("bean:automovilService?method=listarTodos")
 
-            // POST: Guardar
+            // POST: Llama a 'automovilService'
             .post().type(Automovil.class)
-                .to("bean:automovilRepository?method=save")
+                .to("bean:automovilService?method=guardar")
 
-            // DELETE: Borrar por ID
+            // DELETE: Llama a 'automovilService'
             .delete("/{id}")
-                .to("bean:automovilRepository?method=deleteById(${header.id})");
+                .to("bean:automovilService?method=borrar(${header.id})");
     }
 }
